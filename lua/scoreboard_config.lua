@@ -2,6 +2,7 @@ Scoreboard_Config = Scoreboard_Config or {}
 
 Scoreboard_Config.ServerName = 'Scoreboard' 
 Scoreboard_Config.Website = 'www.google.com'
+Scoreboard_Config.Discord = 'https://discord.gg/GJ5uzNSM'
 
 Scoreboard_Config.Ranks = {
     ['superadmin'] = {name='Super Administrator', color = Color(0,0,255)},
