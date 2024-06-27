@@ -14,9 +14,9 @@ function ScoreboardDrawing.DrawText(str,font,x,y,color)
     surface.DrawText(str)
 end
 
-function ScoreboardDrawing.DrawOutlinedRect(x,y,w,h,thick,color)
-    surface.SetDrawColor(color)
-    for i = 0, thick - 1 do
-        surface.DrawOutlinedRect(x+i,y+i,w-i*2,h-i*2)
-    end
-end
+//function ScoreboardDrawing.DrawOutlinedRect(x,y,w,h,thick,color)
+//    surface.SetDrawColor(color)
+//    for i = 0, thick - 1 do
+//        surface.DrawOutlinedRect(x+i,y+i,w-i*2,h-i*2)
+//    end
+//end
