@@ -27,23 +27,24 @@ local function Scoreboard()
     Frame:ShowCloseButton(false)
     Frame:Center()
     gui.EnableScreenClicker(true)
-    Frame.Paint = function(me,w,h)
 
-        local text = {
-            {tag='Name',spacing=Frame:GetWide()/60},
-            {tag='Job',spacing=Frame:GetWide()/6.5},
-            {tag='Money',spacing=Frame:GetWide()/3.5},
-            {tag='Rank',spacing=Frame:GetWide()/2.3},
-            {tag='Kills',spacing=Frame:GetWide()/1.7},
-            {tag='Deaths',spacing=Frame:GetWide()/1.35},
-            {tag='Ping',spacing=Frame:GetWide()/1.08}
-        }
+    local text = {
+        {tag='Name',spacing=Frame:GetWide()/60},
+        {tag='Job',spacing=Frame:GetWide()/6.5},
+        {tag='Money',spacing=Frame:GetWide()/3.5},
+        {tag='Rank',spacing=Frame:GetWide()/2.3},
+        {tag='Kills',spacing=Frame:GetWide()/1.7},
+        {tag='Deaths',spacing=Frame:GetWide()/1.35},
+        {tag='Ping',spacing=Frame:GetWide()/1.08}
+    }
+
+    Frame.Paint = function(me,w,h)
 
         ScoreboardDrawing.DrawRect(0,0,Frame:GetWide(),Frame:GetTall(),Color(108,110,105,26))
         ScoreboardDrawing.DrawRect(0,50,Frame:GetWide(),Frame:GetTall()-100,Color(14,14,14,155))
         ScoreboardDrawing.DrawRect(10,73,Frame:GetWide()-20,30,Color(34,34,34,230) )
         for k, v in pairs(text) do  
-            ScoreboardDrawing.DrawText(v.tag,'ScoreboardFont',v.spacing,Frame:GetTall()/11.5,Color(255,255,255))
+            ScoreboardDrawing.DrawText(v.tag,'ScoreboardFont',v.spacing,Frame:GetTall()/20,Color(255,255,255))
         end
         ScoreboardDrawing.DrawText(camelCaseScoreboardConfig.ServerName,'ScoreboardFont',Frame:GetWide()/60,Frame:GetTall()/150,Color(255,255,255))
         ScoreboardDrawing.DrawText('Players: '..#player.GetAll(),'ScoreboardFontSmall',Frame:GetWide()-150,Frame:GetTall()/100,Color(255,255,255))
@@ -51,7 +52,7 @@ local function Scoreboard()
     end
 
     local discord = vgui.Create('DImageButton',Frame)
-    discord:SetPos(Frame:GetWide()-220,Frame:GetTall()/500)
+    discord:SetPos(Frame:GetWide()-220,Frame:GetTall()-1345)
     discord:SetSize(55,55)
     discord:SetMaterial(discordicon)
     discord:SetCursor('hand')
@@ -102,10 +103,22 @@ local function Scoreboard()
     itemlist.Paint = function(me,w,h)
         ScoreboardDrawing.DrawRect(0,0,w,h,Color(255,255,255,0))
     end
+
     for _, v in pairs(player.GetAll()) do
         item =  itemlist:Add('DPanel')
         item:SetSize(itemlist:GetWide(),30)
         item:Dock(TOP)
+        item:DockMargin(0,0,0,5)
+
+        item.Paint = function(me,w,h)
+            if v == LocalPlayer() then
+                ScoreboardDrawing.DrawRect(0,0,w,h,Color(172,91,91,200))
+            else            
+                ScoreboardDrawing.DrawRect(0,0,w,h,Color(46,45,45,200))
+            end 
+        end
+
+        if not IsValid(v) then item:Remove() return end
     end
 
 end
