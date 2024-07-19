@@ -115,7 +115,14 @@ local function Scoreboard()
                 ScoreboardDrawing.DrawRect(0,0,w,h,Color(172,91,91,200))
             else            
                 ScoreboardDrawing.DrawRect(0,0,w,h,Color(46,45,45,200))
-            end 
+            end
+            ScoreboardDrawing.DrawText(v:getDarkRPVar('rpname'),'ScoreboardFontSmall',text[1][2],item:GetTall()/50,Color(255,255,255))
+            ScoreboardDrawing.DrawText(v:getDarkRPVar('job'),'ScoreboardFontSmall',text[2][2],item:GetTall()/50,Color(255,255,255))
+            ScoreboardDrawing.DrawText(v:getDarkRPVar('money'),'ScoreboardFontSmall',text[3][2],item:GetTall()/50,Color(255,255,255))
+            ScoreboardDrawing.DrawText(v:GetUserGroup(),'ScoreboardFontSmall',text[4][2],item:GetTall()/50,Color(255,255,255))
+            ScoreboardDrawing.DrawText(v:Frags(),'ScoreboardFontSmall',text[5][2],item:GetTall()/50,Color(255,255,255))
+            ScoreboardDrawing.DrawText(v:Deaths(),'ScoreboardFontSmall',text[6][2],item:GetTall()/50,Color(255,255,255))
+            ScoreboardDrawing.DrawText(v:Ping(),'ScoreboardFontSmall',text[7][2],item:GetTall()/50,Color(255,255,255)) 
         end
 
         if not IsValid(v) then item:Remove() return end
