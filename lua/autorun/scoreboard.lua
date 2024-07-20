@@ -116,13 +116,15 @@ local function Scoreboard()
             else            
                 ScoreboardDrawing.DrawRect(0,0,w,h,Color(46,45,45,200))
             end
-            ScoreboardDrawing.DrawText(v:getDarkRPVar('rpname'),'ScoreboardFontSmall',text[1][2],item:GetTall()/50,Color(255,255,255))
-            ScoreboardDrawing.DrawText(string.upper(v:getDarkRPVar('job')),'ScoreboardFontSmall',text[2][2],item:GetTall()/50,Color(255,255,255))
-            ScoreboardDrawing.DrawText(v:getDarkRPVar('money'),'ScoreboardFontSmall',text[3][2],item:GetTall()/50,Color(255,255,255))
-            ScoreboardDrawing.DrawText(string.upper(v:GetUserGroup()),'ScoreboardFontSmall',text[4][2],item:GetTall()/50,Color(255,255,255))
-            ScoreboardDrawing.DrawText(v:Frags(),'ScoreboardFontSmall',text[5][2],item:GetTall()/50,Color(255,255,255))
-            ScoreboardDrawing.DrawText(v:Deaths(),'ScoreboardFontSmall',text[6][2],item:GetTall()/50,Color(255,255,255))
-            ScoreboardDrawing.DrawText(v:Ping(),'ScoreboardFontSmall',text[7][2],item:GetTall()/50,Color(255,255,255)) 
+            
+
+            ScoreboardDrawing.DrawText(v:getDarkRPVar('rpname'),'ScoreboardFontSmall',item:GetWide()/100,item:GetTall()/50,Color(255,255,255))
+            ScoreboardDrawing.DrawText(string.upper(v:getDarkRPVar('job')),'ScoreboardFontSmall',item:GetWide()/7,item:GetTall()/50,Color(255,255,255))
+            ScoreboardDrawing.DrawText(DarkRP.formatMoney(v:getDarkRPVar('money')),'ScoreboardFontSmall',item:GetWide()/3.5,item:GetTall()/50,Color(255,255,255))
+            ScoreboardDrawing.DrawText(string.upper(v:GetUserGroup()),'ScoreboardFontSmall',item:GetWide()/2.38,item:GetTall()/50,Color(255,255,255))
+            ScoreboardDrawing.DrawText(v:Frags(),'ScoreboardFontSmall',item:GetWide()/1.67,item:GetTall()/50,Color(255,255,255))
+            ScoreboardDrawing.DrawText(v:Deaths(),'ScoreboardFontSmall',item:GetWide()/1.315,item:GetTall()/50,Color(255,255,255))
+            ScoreboardDrawing.DrawText(v:Ping(),'ScoreboardFontSmall',item:GetWide()/1.065,item:GetTall()/50,Color(255,255,255)) 
         end
 
         if not IsValid(v) then item:Remove() return end
